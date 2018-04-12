@@ -7,4 +7,5 @@ git add name(项目名称)
 
  git init
  更新仓库git pull --rebase origin master
+ 下载到本地
  git clone "https://github.com/DD0907/MyGithub.io.git"

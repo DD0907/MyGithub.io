@@ -1,0 +1,10 @@
+1、git add . 上传所有
+git add name(项目名称)
+2、git commit -m "项目描述"
+3、git pull origin master
+4、git push -u origin master
+
+
+ git init
+ 更新仓库git pull --rebase origin master
+ git clone "https://github.com/DD0907/MyGithub.io.git"

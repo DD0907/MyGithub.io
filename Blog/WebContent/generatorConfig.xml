@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+	<context id="blog">
+		<commentGenerator>
+			<!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator>
+
+		<jdbcConnection connectionURL="jdbc:mysql://127.0.0.1:3306/blog"
+			driverClass="com.mysql.jdbc.Driver" password="root" userId="root" />
+		<!-- targetProject:生成POJO类的位置 -->
+		<javaModelGenerator targetPackage="com.blog.pojo"
+			targetProject="Blog/src/main/java" />
+		<!-- targetProject:mapper映射文件生成的位置 -->
+		<sqlMapGenerator targetPackage="com.blog.mapper" targetProject="Blog/src/main/resource" />
+		<!-- targetPackage：mapper接口生成的位置 -->
+		<javaClientGenerator targetPackage="com.blog.dao"
+			targetProject="Blog/src/main/java" type="XMLMAPPER" />
+		<!-- 指定数据库表 -->
+		<table tableName="blog"/>
+		<table tableName="blog_admire"/>
+		<table tableName="blog_category"/>
+		<table tableName="blog_collect"/>
+		<table tableName="blog_comment"/>
+		<table tableName="blog_complain"/>
+		<table tableName="blog_label"/>
+		<table tableName="blog_like"/>
+		<table tableName="blog_link"/>
+		<table tableName="blog_picture"/>
+		<table tableName="blog_statistics"/>
+		<table tableName="blogge_info"/>
+		<table tableName="blogger"/>
+	</context>
+</generatorConfiguration>

@@ -105,7 +105,7 @@
       reason, category_id, collect_time
       )
     values (#{id,jdbcType=INTEGER}, #{blogId,jdbcType=INTEGER}, #{collectorId,jdbcType=INTEGER}, 
-      #{reason,jdbcType=VARCHAR}, #{categoryId,jdbcType=INTEGER}, #{collectTime,jdbcType=TIMESTAMP}
+      #{reason,jdbcType=VARCHAR}, #{categoryId,jdbcType=INTEGER}, #{collectTime,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.blog.pojo.BlogCollect">
@@ -147,7 +147,7 @@
         #{categoryId,jdbcType=INTEGER},
       </if>
       <if test="collectTime != null">
-        #{collectTime,jdbcType=TIMESTAMP},
+        #{collectTime,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -176,7 +176,7 @@
         category_id = #{record.categoryId,jdbcType=INTEGER},
       </if>
       <if test="record.collectTime != null">
-        collect_time = #{record.collectTime,jdbcType=TIMESTAMP},
+        collect_time = #{record.collectTime,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -190,7 +190,7 @@
       collector_id = #{record.collectorId,jdbcType=INTEGER},
       reason = #{record.reason,jdbcType=VARCHAR},
       category_id = #{record.categoryId,jdbcType=INTEGER},
-      collect_time = #{record.collectTime,jdbcType=TIMESTAMP}
+      collect_time = #{record.collectTime,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -211,7 +211,7 @@
         category_id = #{categoryId,jdbcType=INTEGER},
       </if>
       <if test="collectTime != null">
-        collect_time = #{collectTime,jdbcType=TIMESTAMP},
+        collect_time = #{collectTime,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -222,7 +222,7 @@
       collector_id = #{collectorId,jdbcType=INTEGER},
       reason = #{reason,jdbcType=VARCHAR},
       category_id = #{categoryId,jdbcType=INTEGER},
-      collect_time = #{collectTime,jdbcType=TIMESTAMP}
+      collect_time = #{collectTime,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

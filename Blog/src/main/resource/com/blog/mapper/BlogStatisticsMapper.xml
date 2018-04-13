@@ -113,7 +113,7 @@
     values (#{id,jdbcType=INTEGER}, #{blogId,jdbcType=INTEGER}, #{commentCount,jdbcType=INTEGER}, 
       #{viewCount,jdbcType=INTEGER}, #{replyCommentCount,jdbcType=INTEGER}, #{collectCount,jdbcType=INTEGER}, 
       #{shareCount,jdbcType=INTEGER}, #{admireCount,jdbcType=INTEGER}, #{likeCount,jdbcType=INTEGER}, 
-      #{releaseTime,jdbcType=TIMESTAMP})
+      #{releaseTime,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.blog.pojo.BlogStatistics">
     insert into blog_statistics
@@ -178,7 +178,7 @@
         #{likeCount,jdbcType=INTEGER},
       </if>
       <if test="releaseTime != null">
-        #{releaseTime,jdbcType=TIMESTAMP},
+        #{releaseTime,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -219,7 +219,7 @@
         like_count = #{record.likeCount,jdbcType=INTEGER},
       </if>
       <if test="record.releaseTime != null">
-        release_time = #{record.releaseTime,jdbcType=TIMESTAMP},
+        release_time = #{record.releaseTime,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -237,7 +237,7 @@
       share_count = #{record.shareCount,jdbcType=INTEGER},
       admire_count = #{record.admireCount,jdbcType=INTEGER},
       like_count = #{record.likeCount,jdbcType=INTEGER},
-      release_time = #{record.releaseTime,jdbcType=TIMESTAMP}
+      release_time = #{record.releaseTime,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -270,7 +270,7 @@
         like_count = #{likeCount,jdbcType=INTEGER},
       </if>
       <if test="releaseTime != null">
-        release_time = #{releaseTime,jdbcType=TIMESTAMP},
+        release_time = #{releaseTime,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -285,7 +285,7 @@
       share_count = #{shareCount,jdbcType=INTEGER},
       admire_count = #{admireCount,jdbcType=INTEGER},
       like_count = #{likeCount,jdbcType=INTEGER},
-      release_time = #{releaseTime,jdbcType=TIMESTAMP}
+      release_time = #{releaseTime,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

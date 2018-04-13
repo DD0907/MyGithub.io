@@ -102,7 +102,7 @@
     insert into blog_like (id, like_id, blog_id, 
       time)
     values (#{id,jdbcType=INTEGER}, #{likeId,jdbcType=INTEGER}, #{blogId,jdbcType=INTEGER}, 
-      #{time,jdbcType=TIMESTAMP})
+      #{time,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.blog.pojo.BlogLike">
     insert into blog_like
@@ -131,7 +131,7 @@
         #{blogId,jdbcType=INTEGER},
       </if>
       <if test="time != null">
-        #{time,jdbcType=TIMESTAMP},
+        #{time,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -154,7 +154,7 @@
         blog_id = #{record.blogId,jdbcType=INTEGER},
       </if>
       <if test="record.time != null">
-        time = #{record.time,jdbcType=TIMESTAMP},
+        time = #{record.time,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -166,7 +166,7 @@
     set id = #{record.id,jdbcType=INTEGER},
       like_id = #{record.likeId,jdbcType=INTEGER},
       blog_id = #{record.blogId,jdbcType=INTEGER},
-      time = #{record.time,jdbcType=TIMESTAMP}
+      time = #{record.time,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -181,7 +181,7 @@
         blog_id = #{blogId,jdbcType=INTEGER},
       </if>
       <if test="time != null">
-        time = #{time,jdbcType=TIMESTAMP},
+        time = #{time,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -190,7 +190,7 @@
     update blog_like
     set like_id = #{likeId,jdbcType=INTEGER},
       blog_id = #{blogId,jdbcType=INTEGER},
-      time = #{time,jdbcType=TIMESTAMP}
+      time = #{time,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

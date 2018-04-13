@@ -128,7 +128,7 @@
       state, time, content
       )
     values (#{id,jdbcType=INTEGER}, #{complainerId,jdbcType=INTEGER}, #{blogId,jdbcType=INTEGER}, 
-      #{state,jdbcType=INTEGER}, #{time,jdbcType=TIMESTAMP}, #{content,jdbcType=LONGVARCHAR}
+      #{state,jdbcType=INTEGER}, #{time,jdbcType=VARCHAR}, #{content,jdbcType=LONGVARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.blog.pojo.BlogComplain">
@@ -167,7 +167,7 @@
         #{state,jdbcType=INTEGER},
       </if>
       <if test="time != null">
-        #{time,jdbcType=TIMESTAMP},
+        #{time,jdbcType=VARCHAR},
       </if>
       <if test="content != null">
         #{content,jdbcType=LONGVARCHAR},
@@ -196,7 +196,7 @@
         state = #{record.state,jdbcType=INTEGER},
       </if>
       <if test="record.time != null">
-        time = #{record.time,jdbcType=TIMESTAMP},
+        time = #{record.time,jdbcType=VARCHAR},
       </if>
       <if test="record.content != null">
         content = #{record.content,jdbcType=LONGVARCHAR},
@@ -212,7 +212,7 @@
       complainer_id = #{record.complainerId,jdbcType=INTEGER},
       blog_id = #{record.blogId,jdbcType=INTEGER},
       state = #{record.state,jdbcType=INTEGER},
-      time = #{record.time,jdbcType=TIMESTAMP},
+      time = #{record.time,jdbcType=VARCHAR},
       content = #{record.content,jdbcType=LONGVARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -224,7 +224,7 @@
       complainer_id = #{record.complainerId,jdbcType=INTEGER},
       blog_id = #{record.blogId,jdbcType=INTEGER},
       state = #{record.state,jdbcType=INTEGER},
-      time = #{record.time,jdbcType=TIMESTAMP}
+      time = #{record.time,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -242,7 +242,7 @@
         state = #{state,jdbcType=INTEGER},
       </if>
       <if test="time != null">
-        time = #{time,jdbcType=TIMESTAMP},
+        time = #{time,jdbcType=VARCHAR},
       </if>
       <if test="content != null">
         content = #{content,jdbcType=LONGVARCHAR},
@@ -255,7 +255,7 @@
     set complainer_id = #{complainerId,jdbcType=INTEGER},
       blog_id = #{blogId,jdbcType=INTEGER},
       state = #{state,jdbcType=INTEGER},
-      time = #{time,jdbcType=TIMESTAMP},
+      time = #{time,jdbcType=VARCHAR},
       content = #{content,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -264,7 +264,7 @@
     set complainer_id = #{complainerId,jdbcType=INTEGER},
       blog_id = #{blogId,jdbcType=INTEGER},
       state = #{state,jdbcType=INTEGER},
-      time = #{time,jdbcType=TIMESTAMP}
+      time = #{time,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

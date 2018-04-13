@@ -16,7 +16,7 @@ public class BloggerServiceImpl implements BloggerService {
 	BloggerMapper bloggerMapper;
 
 	@Override
-	public int insertData(Blogger t) {
+	public int insertBlogger(Blogger t) {
 		int result = bloggerMapper.insertSelective(t);
 		if (result > 0) {
 			return result;
@@ -25,7 +25,7 @@ public class BloggerServiceImpl implements BloggerService {
 	}
 
 	@Override
-	public int updateData(Blogger t) {
+	public int updateBlogger(Blogger t) {
 		BloggerExample example = new BloggerExample();
 		example.createCriteria().andIdEqualTo(t.getId());
 		int result = bloggerMapper.updateByExampleSelective(t, example);
@@ -36,7 +36,7 @@ public class BloggerServiceImpl implements BloggerService {
 	}
 
 	@Override
-	public int deleteData(Blogger t) {
+	public int deleteBlogger(Blogger t) {
 		int result = bloggerMapper.updateByPrimaryKeySelective(t);
 		if (result > 0) {
 			return result;
@@ -45,7 +45,7 @@ public class BloggerServiceImpl implements BloggerService {
 	}
 
 	@Override
-	public List<Blogger> selectDataAll() {
+	public List<Blogger> selectBloggerAll() {
 		List<Blogger> bList = bloggerMapper.selectByExample(null);
 		if (bList.isEmpty()) {
 			return null;
@@ -54,7 +54,7 @@ public class BloggerServiceImpl implements BloggerService {
 	}
 
 	@Override
-	public List<Blogger> selectDataByCondition(Blogger t) {
+	public List<Blogger> selectBloggerByCondition(Blogger t) {
 		BloggerExample example = new BloggerExample();
 		example.createCriteria().andUsernameEqualTo(t.getUsername());
 		List<Blogger> bList = bloggerMapper.selectByExample(example);

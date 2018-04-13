@@ -105,7 +105,7 @@
       path, description, upload_time
       )
     values (#{id,jdbcType=INTEGER}, #{bloggerId,jdbcType=INTEGER}, #{category,jdbcType=INTEGER}, 
-      #{path,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{uploadTime,jdbcType=TIMESTAMP}
+      #{path,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{uploadTime,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.blog.pojo.BlogPicture">
@@ -147,7 +147,7 @@
         #{description,jdbcType=VARCHAR},
       </if>
       <if test="uploadTime != null">
-        #{uploadTime,jdbcType=TIMESTAMP},
+        #{uploadTime,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -176,7 +176,7 @@
         description = #{record.description,jdbcType=VARCHAR},
       </if>
       <if test="record.uploadTime != null">
-        upload_time = #{record.uploadTime,jdbcType=TIMESTAMP},
+        upload_time = #{record.uploadTime,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -190,7 +190,7 @@
       category = #{record.category,jdbcType=INTEGER},
       path = #{record.path,jdbcType=VARCHAR},
       description = #{record.description,jdbcType=VARCHAR},
-      upload_time = #{record.uploadTime,jdbcType=TIMESTAMP}
+      upload_time = #{record.uploadTime,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -211,7 +211,7 @@
         description = #{description,jdbcType=VARCHAR},
       </if>
       <if test="uploadTime != null">
-        upload_time = #{uploadTime,jdbcType=TIMESTAMP},
+        upload_time = #{uploadTime,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -222,7 +222,7 @@
       category = #{category,jdbcType=INTEGER},
       path = #{path,jdbcType=VARCHAR},
       description = #{description,jdbcType=VARCHAR},
-      upload_time = #{uploadTime,jdbcType=TIMESTAMP}
+      upload_time = #{uploadTime,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

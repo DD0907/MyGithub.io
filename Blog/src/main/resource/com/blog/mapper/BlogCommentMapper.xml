@@ -129,7 +129,7 @@
       listener_id, state, release_time, 
       content)
     values (#{id,jdbcType=INTEGER}, #{blogId,jdbcType=INTEGER}, #{spokesmanId,jdbcType=INTEGER}, 
-      #{listenerId,jdbcType=INTEGER}, #{state,jdbcType=INTEGER}, #{releaseTime,jdbcType=TIMESTAMP}, 
+      #{listenerId,jdbcType=INTEGER}, #{state,jdbcType=INTEGER}, #{releaseTime,jdbcType=VARCHAR}, 
       #{content,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.blog.pojo.BlogComment">
@@ -174,7 +174,7 @@
         #{state,jdbcType=INTEGER},
       </if>
       <if test="releaseTime != null">
-        #{releaseTime,jdbcType=TIMESTAMP},
+        #{releaseTime,jdbcType=VARCHAR},
       </if>
       <if test="content != null">
         #{content,jdbcType=LONGVARCHAR},
@@ -206,7 +206,7 @@
         state = #{record.state,jdbcType=INTEGER},
       </if>
       <if test="record.releaseTime != null">
-        release_time = #{record.releaseTime,jdbcType=TIMESTAMP},
+        release_time = #{record.releaseTime,jdbcType=VARCHAR},
       </if>
       <if test="record.content != null">
         content = #{record.content,jdbcType=LONGVARCHAR},
@@ -223,7 +223,7 @@
       spokesman_id = #{record.spokesmanId,jdbcType=INTEGER},
       listener_id = #{record.listenerId,jdbcType=INTEGER},
       state = #{record.state,jdbcType=INTEGER},
-      release_time = #{record.releaseTime,jdbcType=TIMESTAMP},
+      release_time = #{record.releaseTime,jdbcType=VARCHAR},
       content = #{record.content,jdbcType=LONGVARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -236,7 +236,7 @@
       spokesman_id = #{record.spokesmanId,jdbcType=INTEGER},
       listener_id = #{record.listenerId,jdbcType=INTEGER},
       state = #{record.state,jdbcType=INTEGER},
-      release_time = #{record.releaseTime,jdbcType=TIMESTAMP}
+      release_time = #{record.releaseTime,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -257,7 +257,7 @@
         state = #{state,jdbcType=INTEGER},
       </if>
       <if test="releaseTime != null">
-        release_time = #{releaseTime,jdbcType=TIMESTAMP},
+        release_time = #{releaseTime,jdbcType=VARCHAR},
       </if>
       <if test="content != null">
         content = #{content,jdbcType=LONGVARCHAR},
@@ -271,7 +271,7 @@
       spokesman_id = #{spokesmanId,jdbcType=INTEGER},
       listener_id = #{listenerId,jdbcType=INTEGER},
       state = #{state,jdbcType=INTEGER},
-      release_time = #{releaseTime,jdbcType=TIMESTAMP},
+      release_time = #{releaseTime,jdbcType=VARCHAR},
       content = #{content,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -281,7 +281,7 @@
       spokesman_id = #{spokesmanId,jdbcType=INTEGER},
       listener_id = #{listenerId,jdbcType=INTEGER},
       state = #{state,jdbcType=INTEGER},
-      release_time = #{releaseTime,jdbcType=TIMESTAMP}
+      release_time = #{releaseTime,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

@@ -136,8 +136,8 @@
       update_time, content)
     values (#{id,jdbcType=INTEGER}, #{bloggerId,jdbcType=INTEGER}, #{categoryId,jdbcType=INTEGER}, 
       #{labelId,jdbcType=INTEGER}, #{state,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, 
-      #{summary,jdbcType=VARCHAR}, #{keyWord,jdbcType=VARCHAR}, #{releaseTime,jdbcType=TIMESTAMP}, 
-      #{updateTime,jdbcType=TIMESTAMP}, #{content,jdbcType=LONGVARCHAR})
+      #{summary,jdbcType=VARCHAR}, #{keyWord,jdbcType=VARCHAR}, #{releaseTime,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=VARCHAR}, #{content,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.blog.pojo.Blog">
     insert into blog
@@ -202,10 +202,10 @@
         #{keyWord,jdbcType=VARCHAR},
       </if>
       <if test="releaseTime != null">
-        #{releaseTime,jdbcType=TIMESTAMP},
+        #{releaseTime,jdbcType=VARCHAR},
       </if>
       <if test="updateTime != null">
-        #{updateTime,jdbcType=TIMESTAMP},
+        #{updateTime,jdbcType=VARCHAR},
       </if>
       <if test="content != null">
         #{content,jdbcType=LONGVARCHAR},
@@ -246,10 +246,10 @@
         key_word = #{record.keyWord,jdbcType=VARCHAR},
       </if>
       <if test="record.releaseTime != null">
-        release_time = #{record.releaseTime,jdbcType=TIMESTAMP},
+        release_time = #{record.releaseTime,jdbcType=VARCHAR},
       </if>
       <if test="record.updateTime != null">
-        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+        update_time = #{record.updateTime,jdbcType=VARCHAR},
       </if>
       <if test="record.content != null">
         content = #{record.content,jdbcType=LONGVARCHAR},
@@ -269,8 +269,8 @@
       title = #{record.title,jdbcType=VARCHAR},
       summary = #{record.summary,jdbcType=VARCHAR},
       key_word = #{record.keyWord,jdbcType=VARCHAR},
-      release_time = #{record.releaseTime,jdbcType=TIMESTAMP},
-      update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      release_time = #{record.releaseTime,jdbcType=VARCHAR},
+      update_time = #{record.updateTime,jdbcType=VARCHAR},
       content = #{record.content,jdbcType=LONGVARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -286,8 +286,8 @@
       title = #{record.title,jdbcType=VARCHAR},
       summary = #{record.summary,jdbcType=VARCHAR},
       key_word = #{record.keyWord,jdbcType=VARCHAR},
-      release_time = #{record.releaseTime,jdbcType=TIMESTAMP},
-      update_time = #{record.updateTime,jdbcType=TIMESTAMP}
+      release_time = #{record.releaseTime,jdbcType=VARCHAR},
+      update_time = #{record.updateTime,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -317,10 +317,10 @@
         key_word = #{keyWord,jdbcType=VARCHAR},
       </if>
       <if test="releaseTime != null">
-        release_time = #{releaseTime,jdbcType=TIMESTAMP},
+        release_time = #{releaseTime,jdbcType=VARCHAR},
       </if>
       <if test="updateTime != null">
-        update_time = #{updateTime,jdbcType=TIMESTAMP},
+        update_time = #{updateTime,jdbcType=VARCHAR},
       </if>
       <if test="content != null">
         content = #{content,jdbcType=LONGVARCHAR},
@@ -337,8 +337,8 @@
       title = #{title,jdbcType=VARCHAR},
       summary = #{summary,jdbcType=VARCHAR},
       key_word = #{keyWord,jdbcType=VARCHAR},
-      release_time = #{releaseTime,jdbcType=TIMESTAMP},
-      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      release_time = #{releaseTime,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=VARCHAR},
       content = #{content,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -351,8 +351,8 @@
       title = #{title,jdbcType=VARCHAR},
       summary = #{summary,jdbcType=VARCHAR},
       key_word = #{keyWord,jdbcType=VARCHAR},
-      release_time = #{releaseTime,jdbcType=TIMESTAMP},
-      update_time = #{updateTime,jdbcType=TIMESTAMP}
+      release_time = #{releaseTime,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

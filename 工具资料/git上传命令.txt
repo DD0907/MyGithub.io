@@ -1,6 +1,10 @@
 1、git add . 上传所有
 git add name(项目名称)
 2、git commit -m "项目描述"
+*******************************************************************
+若未绑定过仓库则需执行此步骤,绑定过则可跳过此步骤
+git remote add origin https://github.com/DD0907/MyGithub.io.git
+*******************************************************************
 3、git pull origin master
 4、git push -u origin master
 

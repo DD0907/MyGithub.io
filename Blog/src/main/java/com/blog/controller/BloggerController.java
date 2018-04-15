@@ -31,11 +31,11 @@ public class BloggerController {
 		t.setId(1);
 		List<Blogger> bloggers = bloggerService.selectBloggerAll();
 		resultObject.setMap("bloggers", bloggers);
-		if (bloggers == null) {
-			System.out.println(".............................>>>>>>>>>>>>");
-		} else {
-			System.out.println("111111111111111111111111111111111111111111");
-		}
+//		if (bloggers == null) {
+//			System.out.println(".............................>>>>>>>>>>>>");
+//		} else {
+//			System.out.println("111111111111111111111111111111111111111111");
+//		}
 		return resultObject;
 	}
 }

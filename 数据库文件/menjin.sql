@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50721
 File Encoding         : 65001
 
-Date: 2018-04-17 21:23:56
+Date: 2018-04-17 22:01:31
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -43,13 +43,12 @@ CREATE TABLE `t_daka` (
   PRIMARY KEY (`id`),
   KEY `stuID` (`stuID`),
   CONSTRAINT `t_daka_ibfk_1` FOREIGN KEY (`stuID`) REFERENCES `t_student` (`stuID`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_daka
 -- ----------------------------
-INSERT INTO `t_daka` VALUES ('1', '150302153254', '2018-04-17 15:05:16');
-INSERT INTO `t_daka` VALUES ('2', '150302153332', '2018-04-26 15:09:37');
+INSERT INTO `t_daka` VALUES ('3', '150302153201', '2018-04-17 21:58:20');
 
 -- ----------------------------
 -- Table structure for `t_login`
@@ -76,19 +75,20 @@ CREATE TABLE `t_student` (
   `stuName` varchar(16) NOT NULL,
   `classID` int(11) NOT NULL,
   `isUse` enum('false','true') NOT NULL DEFAULT 'true',
-  `yuanquID` varchar(2) NOT NULL,
-  `louhaoID` varchar(2) NOT NULL,
-  `qinshihao` varchar(3) NOT NULL,
+  `yuanquID` varchar(12) NOT NULL,
+  `louhaoID` varchar(12) NOT NULL,
+  `qinshihao` varchar(12) NOT NULL,
   PRIMARY KEY (`stuID`),
   KEY `classID` (`classID`),
-  CONSTRAINT `t_student_ibfk_1` FOREIGN KEY (`classID`) REFERENCES `t_class` (`classID`)
+  KEY `yuanquID` (`yuanquID`),
+  CONSTRAINT `t_student_ibfk_1` FOREIGN KEY (`yuanquID`) REFERENCES `t_yuanqu` (`yuanquID`),
+  CONSTRAINT `t_student_ibfk_2` FOREIGN KEY (`classID`) REFERENCES `t_class` (`classID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_student
 -- ----------------------------
-INSERT INTO `t_student` VALUES ('150302153254', '李小龙', '1532', 'true', '1', '2', '118');
-INSERT INTO `t_student` VALUES ('150302153332', '王可可', '1533', 'true', '2', '2', '301');
+INSERT INTO `t_student` VALUES ('150302153201', '张三', '1532', 'true', '101', '一号楼', '103');
 
 -- ----------------------------
 -- Table structure for `t_xibie`
@@ -122,5 +122,5 @@ CREATE TABLE `t_yuanqu` (
 -- ----------------------------
 -- Records of t_yuanqu
 -- ----------------------------
-INSERT INTO `t_yuanqu` VALUES ('2', '立德园');
-INSERT INTO `t_yuanqu` VALUES ('3', '立志园');
+INSERT INTO `t_yuanqu` VALUES ('101', '立业园');
+INSERT INTO `t_yuanqu` VALUES ('102', '立德园');

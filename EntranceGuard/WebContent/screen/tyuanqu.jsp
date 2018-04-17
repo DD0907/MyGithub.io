@@ -122,7 +122,7 @@
 								var $td = $("<td></td>"); //行中的元素
 								$tr.append($td.clone().text(item.yuanquid));
 								$tr.append($td.clone().text(item.yuanquname));
-								$tr.append($td.clone().html('<input type="button" value="修改"  class="btn btn-primary" onclick="update('+ item.classid+ ');" /> <input type="button" value="禁用"  class="btn btn-warning" onclick="del('+ item.classid+ ');" />'));
+								$tr.append($td.clone().html('<input type="button" value="修改"  class="btn btn-primary" onclick="update('+ item.classid+ ');" />'));
 								$("#tyuanqu").after($tr);//最后要把内容放入要绑定的地方
 							});
 						}

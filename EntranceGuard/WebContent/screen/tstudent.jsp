@@ -132,12 +132,14 @@
 								$tr.append($td.clone().text(item.qinshihao));
 								$tr.append($td.clone().text(item.yuanquid));
 								$tr.append($td.clone().text(item.isuse));
-								$tr.append($td.clone().html('<input type="button" value="修改"  class="btn btn-primary" onclick="update('+ item.id+ ');" /> <input type="button" value="禁用"  class="btn btn-warning" onclick="del('+ item.id+ ');" />'));
+								$tr.append($td.clone().html('<input type="button" value="修改"  class="btn btn-primary" onclick="update('+ item.id+ ');" />'));
 								$("#tstudent").after($tr);//最后要把内容放入要绑定的地方
 							});
 						}
 					}
 				});
 	}
+	
+	
 </script>
 </html>

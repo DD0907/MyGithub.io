@@ -124,12 +124,45 @@
 								$tr.append($td.clone().text(item.xibieid));
 								$tr.append($td.clone().text(item.xibiename));
 								$tr.append($td.clone().text(item.isuse));
-								$tr.append($td.clone().html('<input type="button" value="修改"  class="btn btn-primary" onclick="update('+ item.xibieid+ ');" /> <input type="button" value="禁用"  class="btn btn-warning" onclick="del('+ item.xibieid+ ');" />'));
+								$tr.append($td.clone().html('<input type="button" value="修改"  class="btn btn-primary" onclick="update('+ item.xibieid+ ');" />'));
 								$("#tdept").after($tr);//最后要把内容放入要绑定的地方
 							});
 						}
 					}
 				});
+	}
+	
+	function update(xibieid) {
+		layer.open({
+			type : 2,
+			title : '修改系别',
+			maxmin : false,
+			//点击遮罩不关闭层
+			shadeClose : true,
+			//弹出框大小
+			area : [ '500px', '400px' ],
+			//弹出框地址
+			content : '/EntranceGuard/updatetdept.htm?xibieid=' + xibieid,
+			//点击关闭按钮事件
+			end : function() {
+			}
+		});
+	}
+	function add() {
+		layer.open({
+			type : 2,
+			title : '添加系别',
+			maxmin : false,
+			//点击遮罩不关闭层
+			shadeClose : true,
+			//弹出框大小
+			area : [ '500px', '400px' ],
+			//弹出框地址
+			content : '/EntranceGuard/addtdept.htm',
+			//点击关闭按钮事件
+			end : function() {
+			}
+		});
 	}
 </script>
 </html>

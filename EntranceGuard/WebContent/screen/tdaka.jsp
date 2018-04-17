@@ -86,7 +86,7 @@
 							<table class="table table-striped table-bordered table-hover"
 								id="tdakatable">
 								<tr>
-									<th>班級编号</th>
+									<th>编号</th>
 									<th>学号</th>
 									<th>时间</th>
 									<th>操作</th>
@@ -124,12 +124,45 @@
 								$tr.append($td.clone().text(item.id));
 								$tr.append($td.clone().text(item.stuid));
 								$tr.append($td.clone().text(item.time));
-								$tr.append($td.clone().html('<input type="button" value="修改"  class="btn btn-primary" onclick="update('+ item.id+ ');" /> <input type="button" value="禁用"  class="btn btn-warning" onclick="del('+ item.id+ ');" />'));
+								$tr.append($td.clone().html('<input type="button" value="修改"  class="btn btn-primary" onclick="update('+ item.id+ ');" />'));
 								$("#tdaka").after($tr);//最后要把内容放入要绑定的地方
 							});
 						}
 					}
 				});
+	}
+	
+	function update(id) {
+		layer.open({
+			type : 2,
+			title : '修改打卡记录',
+			maxmin : false,
+			//点击遮罩不关闭层
+			shadeClose : true,
+			//弹出框大小
+			area : [ '500px', '400px' ],
+			//弹出框地址
+			content : '/EntranceGuard/updatetdaka.htm?id=' + id,
+			//点击关闭按钮事件
+			end : function() {
+			}
+		});
+	}
+	function add() {
+		layer.open({
+			type : 2,
+			title : '添加打卡记录',
+			maxmin : false,
+			//点击遮罩不关闭层
+			shadeClose : true,
+			//弹出框大小
+			area : [ '500px', '400px' ],
+			//弹出框地址
+			content : '/EntranceGuard/addtdaka.htm',
+			//点击关闭按钮事件
+			end : function() {
+			}
+		});
 	}
 </script>
 </html>

@@ -39,7 +39,7 @@
 				<div class="navbar-form navbar-left" role="search">
 					<div class="form-group">
 						<input type="text" class="form-control" id="name"
-							placeholder="请输入班级名称查询">
+							placeholder="请输入园区名称查询">
 					</div>
 					<button type="submit" class="btn btn-default" onclick="search()">搜索</button>
 				</div>

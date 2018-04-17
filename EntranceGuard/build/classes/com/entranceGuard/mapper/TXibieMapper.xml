@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.entranceGuard.dao.TXibieMapper">
+  <resultMap id="BaseResultMap" type="com.entranceGuard.pojo.TXibie">
+    <id column="xibieID" jdbcType="BIGINT" property="xibieid" />
+    <result column="xibieName" jdbcType="VARCHAR" property="xibiename" />
+    <result column="isUse" jdbcType="CHAR" property="isuse" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    xibieID, xibieName, isUse
+  </sql>
+  <select id="selectByExample" parameterType="com.entranceGuard.pojo.TXibieExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_xibie
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_xibie
+    where xibieID = #{xibieid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_xibie
+    where xibieID = #{xibieid,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.entranceGuard.pojo.TXibieExample">
+    delete from t_xibie
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.entranceGuard.pojo.TXibie">
+    insert into t_xibie (xibieID, xibieName, isUse
+      )
+    values (#{xibieid,jdbcType=BIGINT}, #{xibiename,jdbcType=VARCHAR}, #{isuse,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.entranceGuard.pojo.TXibie">
+    insert into t_xibie
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="xibieid != null">
+        xibieID,
+      </if>
+      <if test="xibiename != null">
+        xibieName,
+      </if>
+      <if test="isuse != null">
+        isUse,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="xibieid != null">
+        #{xibieid,jdbcType=BIGINT},
+      </if>
+      <if test="xibiename != null">
+        #{xibiename,jdbcType=VARCHAR},
+      </if>
+      <if test="isuse != null">
+        #{isuse,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.entranceGuard.pojo.TXibieExample" resultType="java.lang.Long">
+    select count(*) from t_xibie
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update t_xibie
+    <set>
+      <if test="record.xibieid != null">
+        xibieID = #{record.xibieid,jdbcType=BIGINT},
+      </if>
+      <if test="record.xibiename != null">
+        xibieName = #{record.xibiename,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isuse != null">
+        isUse = #{record.isuse,jdbcType=CHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update t_xibie
+    set xibieID = #{record.xibieid,jdbcType=BIGINT},
+      xibieName = #{record.xibiename,jdbcType=VARCHAR},
+      isUse = #{record.isuse,jdbcType=CHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.entranceGuard.pojo.TXibie">
+    update t_xibie
+    <set>
+      <if test="xibiename != null">
+        xibieName = #{xibiename,jdbcType=VARCHAR},
+      </if>
+      <if test="isuse != null">
+        isUse = #{isuse,jdbcType=CHAR},
+      </if>
+    </set>
+    where xibieID = #{xibieid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.entranceGuard.pojo.TXibie">
+    update t_xibie
+    set xibieName = #{xibiename,jdbcType=VARCHAR},
+      isUse = #{isuse,jdbcType=CHAR}
+    where xibieID = #{xibieid,jdbcType=BIGINT}
+  </update>
+</mapper>

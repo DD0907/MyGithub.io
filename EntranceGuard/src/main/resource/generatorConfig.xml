@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+	<context id="EntranceGuard">
+		<commentGenerator>
+			<!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator>
+
+		<jdbcConnection connectionURL="jdbc:mysql://127.0.0.1:3306/menjin"
+			driverClass="com.mysql.jdbc.Driver" password="root" userId="root" />
+		<!-- targetProject:生成POJO类的位置 -->
+		<javaModelGenerator targetPackage="com.entranceGuard.pojo"
+			targetProject="EntranceGuard/src/main/java" />
+		<!-- targetProject:mapper映射文件生成的位置 -->
+		<sqlMapGenerator targetPackage="com.entranceGuard.mapper" targetProject="EntranceGuard/src/main/resource" />
+		<!-- targetPackage：mapper接口生成的位置 -->
+		<javaClientGenerator targetPackage="com.entranceGuard.dao"
+			targetProject="EntranceGuard/src/main/java" type="XMLMAPPER" />
+		<!-- 指定数据库表 -->
+		<table tableName="t_class"/>
+		<table tableName="t_daka"/>
+		<table tableName="t_login"/>
+		<table tableName="t_student"/>
+		<table tableName="t_xibie"/>
+		<table tableName="t_yuanqu"/>
+	</context>
+</generatorConfiguration>

@@ -178,4 +178,8 @@
       isUse = #{isuse,jdbcType=CHAR}
     where classID = #{classid,jdbcType=INTEGER}
   </update>
+  
+  <select id="selectClassByClassName" parameterType="String" resultMap="BaseResultMap">
+  	select * from t_class where className=#{classname}
+  </select>
 </mapper>

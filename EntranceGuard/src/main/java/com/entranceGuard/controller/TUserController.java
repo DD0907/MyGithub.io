@@ -17,7 +17,7 @@ import com.entranceGuard.service.UserService;
 
 @Controller
 @RequestMapping("/")
-public class UserController {
+public class TUserController {
 	@Autowired
 	UserService userService;
 

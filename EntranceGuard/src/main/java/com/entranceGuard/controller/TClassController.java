@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -48,6 +49,69 @@ public class TClassController {
 			resultObject.setResult("success");
 			resultObject.setMessage("查询成功");
 			resultObject.setMap("tClass", tClasses);
+			resultObject.setData("/EntranceGuard/tclass.htm");
+		}
+		return resultObject;
+	}
+
+	// 添加班级
+	@RequestMapping(value = "/addtclass", method = RequestMethod.GET)
+	public void addtClass(ModelMap model, HttpServletRequest request) {
+	}
+
+	@RequestMapping(value = "/addtclass", method = RequestMethod.POST, produces = { "application/json;charset=UTF-8" })
+	@ResponseBody
+	public ResultObject<String> addtClass(HttpServletRequest request, HttpServletResponse response) {
+		Integer tClassid = Integer.parseInt(request.getParameter("classid").trim());
+		String tClassname = request.getParameter("classname").trim();
+		String result = "success";
+		String message = "添加成功";
+		TClass tClasses = new TClass();
+		tClasses.setClassid(tClassid);
+		tClasses.setClassname(tClassname);
+		tClasses.setIsuse("true");
+		ResultObject<String> resultObject = new ResultObject<>(result, message);
+		TClass tClass = tClassService.selectTClassByclassName(tClasses);
+		if (tClass != null) {
+			resultObject.setResult("errors");
+			resultObject.setMessage("已存在");
+			resultObject.setData("/EntranceGuard/addtClass.htm");
+		} else {
+			int index = tClassService.insertUser(tClasses);
+			if (index > 0) {
+				resultObject.setData("/EntranceGuard/tclass.htm");
+			} else {
+				resultObject.setResult("error");
+				resultObject.setMessage("添加失败");
+				resultObject.setData("/EntranceGuard/addtClass.htm");
+			}
+		}
+		return resultObject;
+	}
+	//修改班级
+	@RequestMapping(value = "/updateclass", method = RequestMethod.GET)
+	public void updateclass(ModelMap model, HttpServletRequest request) {
+	}
+
+	@RequestMapping(value = "/updateclass", method = RequestMethod.POST, produces = { "application/json;charset=UTF-8" })
+	@ResponseBody
+	public ResultObject<String> updateclass(HttpServletRequest request, HttpServletResponse response) {
+		Integer tClassid = Integer.parseInt(request.getParameter("classid").trim());
+		String tClassname = request.getParameter("classname").trim();
+		String tClassisuse = request.getParameter("status").trim();
+		String result = "success";
+		String message = "修改成功";
+		TClass tClasses = new TClass();
+		tClasses.setClassid(tClassid);
+		tClasses.setClassname(tClassname);
+		tClasses.setIsuse(tClassisuse);
+		ResultObject<String> resultObject = new ResultObject<>(result, message);
+		int index=tClassService.updateUser(tClasses);
+		if (index>0) {
+			resultObject.setData("/EntranceGuard/tclass.htm");
+		}else {
+			resultObject.setResult("error");
+			resultObject.setMessage("修改失败");
 			resultObject.setData("/EntranceGuard/tclass.htm");
 		}
 		return resultObject;

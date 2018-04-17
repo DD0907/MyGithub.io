@@ -45,7 +45,10 @@ public class TClassServiceImpl implements com.entranceGuard.service.TClassServic
 
 	@Override
 	public TClass selectTClassByclassName(TClass tClass) {
-
+		TClass tClass2 = tClassMapper.selectClassByClassName(tClass.getClassname());
+		if (tClass2 != null) {
+			return tClass2;
+		}
 		return null;
 	}
 

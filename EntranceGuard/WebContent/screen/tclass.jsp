@@ -25,6 +25,8 @@
 	src="${pageContext.request.contextPath}/page/js/bootstrap.min.js"></script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/page/js/twitter-bootstrap-hover-dropdown.min.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/page/layer/js/layer.js"></script>
 </head>
 <body class="bootstrap-admin-with-small-navbar" onload="search()">
 	<nav class="navbar navbar-default navbar-inverse navbar-fixed-top "
@@ -142,7 +144,7 @@
 			//弹出框大小
 			area : [ '500px', '400px' ],
 			//弹出框地址
-			content : '/EntranceGuard/updatetclass.htm?classid=' + classid,
+			content : '/EntranceGuard/updateclass.htm?classid=' + classid,
 			//点击关闭按钮事件
 			end : function() {
 			}

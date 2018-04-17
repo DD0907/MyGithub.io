@@ -19,6 +19,8 @@ public interface TClassMapper {
     List<TClass> selectByExample(TClassExample example);
 
     TClass selectByPrimaryKey(Integer classid);
+    
+    TClass selectClassByClassName(String classname);
 
     int updateByExampleSelective(@Param("record") TClass record, @Param("example") TClassExample example);
 

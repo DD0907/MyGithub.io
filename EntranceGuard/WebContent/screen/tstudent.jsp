@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>后台管理</title>
+<title>门禁管理系统</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- Bootstrap -->
@@ -25,6 +25,8 @@
 	src="${pageContext.request.contextPath}/page/js/bootstrap.min.js"></script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/page/js/twitter-bootstrap-hover-dropdown.min.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/page/layer/js/layer.js"></script>
 </head>
 <body class="bootstrap-admin-with-small-navbar" onload="search()">
 	<nav class="navbar navbar-default navbar-inverse navbar-fixed-top "
@@ -140,6 +142,21 @@
 				});
 	}
 	
-	
+	function add() {
+		layer.open({
+			type : 2,
+			title : '添加学生信息',
+			maxmin : false,
+			//点击遮罩不关闭层
+			shadeClose : true,
+			//弹出框大小
+			area : [ '500px', '400px' ],
+			//弹出框地址
+			content : '/EntranceGuard/addtstudent.htm',
+			//点击关闭按钮事件
+			end : function() {
+			}
+		});
+	}
 </script>
 </html>

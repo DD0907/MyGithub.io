@@ -53,4 +53,31 @@ public class TDakaController {
 		}
 		return resultObject;
 	}
+
+	@RequestMapping(value = "/addtdaka", method = RequestMethod.GET)
+	public void addtdaka(ModelMap model, HttpServletRequest request) {
+
+	}
+
+	@RequestMapping(value = "/addtdaka", method = RequestMethod.POST, produces = { "application/json;charset=UTF-8" })
+	@ResponseBody
+	public ResultObject<String> addtClass(HttpServletRequest request, HttpServletResponse response) {
+		String stuid = request.getParameter("stuid").trim();
+		String time = request.getParameter("time").trim();
+		String result = "success";
+		String message = "添加成功";
+		TDaka tDaka = new TDaka();
+		tDaka.setStuid(stuid);
+		tDaka.setTime(time);
+		ResultObject<String> resultObject = new ResultObject<>(result, message);
+		int index = tDakaService.insert(tDaka);
+		if (index > 0) {
+			resultObject.setData("/EntranceGuard/tdaka.htm");
+		} else {
+			resultObject.setResult("error");
+			resultObject.setMessage("添加失败");
+			resultObject.setData("/EntranceGuard/addtdaka.htm");
+		}
+		return resultObject;
+	}
 }

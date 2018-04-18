@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>后台管理</title>
+<title>门禁管理系统</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- Bootstrap -->
@@ -25,6 +25,8 @@
 	src="${pageContext.request.contextPath}/page/js/bootstrap.min.js"></script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/page/js/twitter-bootstrap-hover-dropdown.min.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/page/layer/js/layer.js"></script>
 </head>
 <body class="bootstrap-admin-with-small-navbar" onload="search()">
 	<nav class="navbar navbar-default navbar-inverse navbar-fixed-top "
@@ -53,8 +55,7 @@
 				<li class="active"><a
 					href="${pageContext.request.contextPath}/main.htm"><i
 						class="glyphicon glyphicon-chevron-right"></i>用户</a></li>
-				<li><a
-					href="${pageContext.request.contextPath}/tclass.htm"><i
+				<li><a href="${pageContext.request.contextPath}/tclass.htm"><i
 						class="glyphicon glyphicon-chevron-right"></i>班级</a></li>
 
 				<li><a href="${pageContext.request.contextPath}/tdaka.htm"><i
@@ -104,30 +105,32 @@
 	function search() {
 		var name = $("#name").val();
 		$.ajax({
-					type : "POST",
-					contentType : 'application/json',
-					url : "/EntranceGuard/tyuanqu.htm?name=" + name,
-					dataType : "json",
-					success : function(data) {
-						if (data.result == "error") {
-							alert(data.message);
-							$('#name').val("");
-						} else {
-							//alert(data.message);
-							var dataObj = data.map.tyuanqu;
-							$("#tyuanqutable  tr:not(:first)").empty();
-							$('#name').val("");
-							$.each(dataObj,function(index, item) {
-								var $tr = $("<tr></tr>"); //表格的一行，在里面可以加各种属性;
-								var $td = $("<td></td>"); //行中的元素
-								$tr.append($td.clone().text(item.yuanquid));
-								$tr.append($td.clone().text(item.yuanquname));
-								$tr.append($td.clone().html('<input type="button" value="修改"  class="btn btn-primary" onclick="update('+ item.classid+ ');" />'));
-								$("#tyuanqu").after($tr);//最后要把内容放入要绑定的地方
-							});
-						}
-					}
-				});
+			type : "POST",
+			contentType : 'application/json',
+			url : "/EntranceGuard/tyuanqu.htm?name=" + name,
+			dataType : "json",
+			success : function(data) {
+				if (data.result == "error") {
+					alert(data.message);
+					$('#name').val("");
+				} else {
+					//alert(data.message);
+					var dataObj = data.map.tyuanqu;
+					$("#tyuanqutable  tr:not(:first)").empty();
+					$('#name').val("");
+					$.each(dataObj, function(index, item) {
+						var $tr = $("<tr></tr>"); //表格的一行，在里面可以加各种属性;
+						var $td = $("<td></td>"); //行中的元素
+						$tr.append($td.clone().text(item.yuanquid));
+						$tr.append($td.clone().text(item.yuanquname));
+						$tr.append($td.clone().html(
+								'<input type="button" value="修改"  class="btn btn-primary" onclick="update('
+										+ item.classid + ');" />'));
+						$("#tyuanqu").after($tr);//最后要把内容放入要绑定的地方
+					});
+				}
+			}
+		});
 	}
 </script>
 </html>

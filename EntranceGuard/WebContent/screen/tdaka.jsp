@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>后台管理</title>
+<title>门禁管理系统</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- Bootstrap -->
@@ -25,6 +25,8 @@
 	src="${pageContext.request.contextPath}/page/js/bootstrap.min.js"></script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/page/js/twitter-bootstrap-hover-dropdown.min.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/page/layer/js/layer.js"></script>
 </head>
 <body class="bootstrap-admin-with-small-navbar" onload="search()">
 	<nav class="navbar navbar-default navbar-inverse navbar-fixed-top "
@@ -88,8 +90,7 @@
 								<tr>
 									<th>编号</th>
 									<th>学号</th>
-									<th>时间</th>
-									<th>操作</th>
+									<th>打卡时间</th>
 								</tr>
 								<tr id="tdaka">
 								</tr>
@@ -124,7 +125,6 @@
 								$tr.append($td.clone().text(item.id));
 								$tr.append($td.clone().text(item.stuid));
 								$tr.append($td.clone().text(item.time));
-								$tr.append($td.clone().html('<input type="button" value="修改"  class="btn btn-primary" onclick="update('+ item.id+ ');" />'));
 								$("#tdaka").after($tr);//最后要把内容放入要绑定的地方
 							});
 						}
@@ -132,22 +132,6 @@
 				});
 	}
 	
-	function update(id) {
-		layer.open({
-			type : 2,
-			title : '修改打卡记录',
-			maxmin : false,
-			//点击遮罩不关闭层
-			shadeClose : true,
-			//弹出框大小
-			area : [ '500px', '400px' ],
-			//弹出框地址
-			content : '/EntranceGuard/updatetdaka.htm?id=' + id,
-			//点击关闭按钮事件
-			end : function() {
-			}
-		});
-	}
 	function add() {
 		layer.open({
 			type : 2,

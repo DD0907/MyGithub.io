@@ -53,4 +53,9 @@ public class TStudentController {
 		}
 		return resultObject;
 	}
+	
+	@RequestMapping(value = "/addtstudent", method = RequestMethod.GET)
+	public void addtstudent(ModelMap model, HttpServletRequest request) {
+
+	}
 }
